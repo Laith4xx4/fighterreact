@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+  Elegant Black/Gray Fitness Theme
+  Matching Flutter App: Carbon Black (#1A1A1A) + Gray tones
+  All colors in HSL format
+*/
+
+@layer base {
+  :root {
+    /* Background colors - Light gray tones */
+    --background: 0 0% 95%; /* #F2F2F2 */
+    --foreground: 0 0% 0%; /* Pure black for text */
+
+    /* Card surfaces - White */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    /* Primary - Carbon Black */
+    --primary: 0 0% 10%; /* #1A1A1A */
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Dark Gray */
+    --secondary: 0 0% 20%; /* #333333 */
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted - Medium Gray */
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 29%; /* #4A4A4A */
+
+    /* Accent - Charcoal */
+    --accent: 0 0% 26%; /* #434343 */
+    --accent-foreground: 0 0% 100%;
+
+    /* Status colors */
+    --destructive: 6 70% 46%; /* #C0392B */
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 145 63% 42%; /* #27AE60 */
+    --success-foreground: 0 0% 100%;
+
+    --warning: 36 90% 51%; /* #F39C12 */
+    --warning-foreground: 0 0% 0%;
+
+    --info: 204 64% 44%; /* #2980B9 */
+    --info-foreground: 0 0% 100%;
+
+    /* Borders and inputs */
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 10%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 0 0% 10%;
+    --sidebar-accent: 0 0% 20%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 0 0% 100%;
+
+    /* Custom theme tokens */
+    --gradient-start: 0 0% 26%; /* #434343 */
+    --gradient-end: 0 0% 0%; /* #000000 */
+    --text-light: 0 0% 56%; /* #8E8E8E */
+  }
+
+  .dark {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 0 0% 95%;
+    --primary-foreground: 0 0% 10%;
+
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 56%;
+
+    --accent: 0 0% 26%;
+    --accent-foreground: 0 0% 95%;
+
+    --destructive: 6 70% 46%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 0% 95%;
+
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 0 0% 95%;
+    --sidebar-primary-foreground: 0 0% 10%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 0 0% 95%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent;
+  }
+
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-end)));
+  }
+
+  .shadow-elegant {
+    box-shadow: 0 10px 30px -10px hsl(var(--primary) / 0.15);
+  }
+
+  .shadow-card {
+    box-shadow: 0 4px 12px 0 hsl(var(--primary) / 0.08);
+  }
+
+  .shadow-elevated {
+    box-shadow: 0 8px 20px 0 hsl(var(--primary) / 0.12);
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -8px hsl(var(--primary) / 0.2);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
